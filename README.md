@@ -36,3 +36,5 @@ Only scan systems you own or are explicitly authorized to test.
 ## License
 
 [Apache 2.0 with Commons Clause](LICENSE): free to use, modify and share, but not to sell.
+
+Bundled third-party wordlists and test fixtures keep their own licenses; see [NOTICE](NOTICE).

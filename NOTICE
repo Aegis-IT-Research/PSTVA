@@ -1,0 +1,32 @@
+PSTVA - Security Assessment Toolkit
+Copyright 2026 AEGIS IT RESEARCH GmbH
+
+Licensed under the Apache License, Version 2.0, with the Commons Clause
+License Condition v1.0 (see LICENSE). This notice must be included in any
+redistribution, as required by Section 4(d) of the Apache License.
+
+-------------------------------------------------------------------------------
+Third-party material
+-------------------------------------------------------------------------------
+
+The files below are NOT covered by the Commons Clause. They remain under
+their original licenses.
+
+modules/tools/ffuf/docker/wordlists/directory-list.txt
+  "directory-list-2.3-medium.txt" from the OWASP DirBuster project
+  Copyright 2007 James Fisher
+  Licensed under the Creative Commons Attribution-Share Alike 3.0 License
+  https://creativecommons.org/licenses/by-sa/3.0/
+  Modifications: original comment header removed.
+
+modules/tools/ffuf/docker/wordlists/subdomains.txt
+  Subdomain wordlist from SecLists (https://github.com/danielmiessler/SecLists)
+  Copyright (c) 2018 Daniel Miessler
+  Licensed under the MIT License
+  Modifications: truncated to the first 100,000 entries.
+
+modules/tools/horusec/tests/fixtures/horusec-result.json
+  Horusec scan output of OWASP Juice Shop
+  (https://github.com/juice-shop/juice-shop), containing code excerpts from it.
+  Copyright (c) Bjoern Kimminich and the OWASP Juice Shop contributors
+  Licensed under the MIT License
