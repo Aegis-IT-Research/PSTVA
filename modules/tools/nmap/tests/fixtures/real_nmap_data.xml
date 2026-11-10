@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.94SVN scan initiated Tue Aug 19 17:51:40 2025 as: nmap -A -vv -T4 -Pn -p 1313 -oX output 192.168.5.241 -->
+<nmaprun scanner="nmap" args="nmap -A -vv -T4 -Pn -p 1313 -oX output 192.168.5.241" start="1755615100" startstr="Tue Aug 19 17:51:40 2025" version="7.94SVN" xmloutputversion="1.05">
+<scaninfo type="connect" protocol="tcp" numservices="1" services="1313"/>
+<verbose level="2"/>
+<debugging level="0"/>
+<taskbegin task="NSE" time="1755615100"/>
+<taskend task="NSE" time="1755615100"/>
+<taskbegin task="NSE" time="1755615100"/>
+<taskend task="NSE" time="1755615100"/>
+<taskbegin task="NSE" time="1755615100"/>
+<taskend task="NSE" time="1755615100"/>
+<taskbegin task="Parallel DNS resolution of 1 host." time="1755615100"/>
+<taskend task="Parallel DNS resolution of 1 host." time="1755615100"/>
+<taskbegin task="Connect Scan" time="1755615100"/>
+<taskend task="Connect Scan" time="1755615101" extrainfo="1 total ports"/>
+<taskbegin task="Service scan" time="1755615101"/>
+<taskbegin task="NSE" time="1755615101"/>
+<taskend task="NSE" time="1755615106"/>
+<taskbegin task="NSE" time="1755615106"/>
+<taskend task="NSE" time="1755615106"/>
+<taskbegin task="NSE" time="1755615106"/>
+<taskend task="NSE" time="1755615106"/>
+<host starttime="1755615100" endtime="1755615106"><status state="up" reason="user-set" reason_ttl="0"/>
+<address addr="192.168.5.241" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<ports><port protocol="tcp" portid="1313"><state state="filtered" reason="no-response" reason_ttl="0"/><service name="bmc_patroldb" method="table" conf="3"/></port>
+</ports>
+</host>
+<taskbegin task="NSE" time="1755615106"/>
+<taskend task="NSE" time="1755615106"/>
+<taskbegin task="NSE" time="1755615106"/>
+<taskend task="NSE" time="1755615106"/>
+<taskbegin task="NSE" time="1755615106"/>
+<taskend task="NSE" time="1755615106"/>
+<runstats><finished time="1755615106" timestr="Tue Aug 19 17:51:46 2025" summary="Nmap done at Tue Aug 19 17:51:46 2025; 1 IP address (1 host up) scanned in 6.22 seconds" elapsed="6.22" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

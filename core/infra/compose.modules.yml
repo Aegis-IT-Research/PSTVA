@@ -1,0 +1,25 @@
+services:
+  front:
+    profiles: ["frontend"]
+    image: ${FRONT_END_IMAGE}
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.front_${COMPOSE_PROJECT_NAME}.rule=Host(`$AUTO_HOST`)"
+      - "traefik.http.services.front_${COMPOSE_PROJECT_NAME}.loadbalancer.server.port=80"
+      - "traefik.http.routers.front_${COMPOSE_PROJECT_NAME}.entrypoints=web"
+
+  flower:
+    profiles: ["flower"]
+    image: ${BACK_END_IMAGE}
+    environment:
+      - PYTHONUNBUFFERED=1
+    env_file:
+      - ../../.env
+    depends_on:
+      - redis
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.flower_${COMPOSE_PROJECT_NAME}.rule=Host(`$AUTO_HOST`) && PathPrefix(`/flower`)"
+      - "traefik.http.services.flower_${COMPOSE_PROJECT_NAME}.loadbalancer.server.port=5555"
+      - "traefik.http.routers.flower_${COMPOSE_PROJECT_NAME}.entrypoints=web"
+    entrypoint: ["celery", "--workdir", "/app", "-A", "core.app.tasks", "flower", "--port=5555", "--address=0.0.0.0", "--url_prefix=/flower"]

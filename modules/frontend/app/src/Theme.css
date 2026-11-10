@@ -1,0 +1,82 @@
+/* Global dark gradient background */
+html, body, #root { height: 100%; }
+body {
+  margin: 0;
+  background: linear-gradient(135deg, #0f172a, #1e293b 35%, #0ea5e9);
+  color: #e5e7eb;
+}
+
+/* Left control panel as glass card */
+.glass-panel {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 10;
+  width: 420px;
+  height: calc(100vh - 20px);
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 14px;
+  padding: 1.2rem 1.4rem;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 16px rgba(0,0,0,.25);
+}
+
+.panel-scroll { overflow-y: auto; padding-right: 4px; }
+
+.panel-label { display: block; font-weight: 600; color: #cbd5e1; }
+.panel-input, .panel-select {
+  width: 100%;
+  padding: .6rem .7rem;
+  margin: .4rem 0 1rem;
+  border-radius: 10px;
+  background: rgba(15, 23, 42, 0.85); /* enforce dark base */
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  color: #e5e7eb; /* visible on dark */
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.panel-input::placeholder { color: #9ca3af; }
+.panel-input:focus, .panel-select:focus {
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.25);
+}
+
+/* Normalize select look and ensure arrow visibility */
+.panel-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23e5e7eb' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right .8rem center;
+  background-size: 12px;
+  padding-right: 2rem; /* space for arrow */
+}
+.panel-select::-ms-expand { display: none; }
+
+/* Dropdown list colors (browser support varies) */
+.panel-select option {
+  background-color: #0f172a;
+  color: #e5e7eb;
+}
+
+.panel-row { display: flex; gap: 8px; margin-bottom: 12px; }
+.tool-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 12px; }
+.panel-btn {
+  padding: .6rem .8rem;
+  border-radius: 10px;
+  border: 0;
+  cursor: pointer;
+  background: linear-gradient(135deg, #22d3ee, #3b82f6);
+  color: #0b1220;
+  font-weight: 700;
+}
+.panel-btn.secondary { background: rgba(255,255,255,0.14); color: #e5e7eb; border: 1px solid rgba(255,255,255,0.25); }
+.panel-btn:disabled { filter: grayscale(0.5) brightness(0.7); cursor: not-allowed; }
+
+.top-right-actions { position: fixed; top: 10px; right: 10px; z-index: 20; }
+.btn-ghost { background: rgba(255,255,255,0.14); color: #e5e7eb; border: 1px solid rgba(255,255,255,0.25); padding: .5rem .7rem; border-radius: 10px; }

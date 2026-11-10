@@ -1,0 +1,14 @@
+    __             __               __
+   / /_____  _____/ /_  _______  __/ /____
+  / //_/ _ \/ ___/ __ \/ ___/ / / / __/ _ \
+ / ,< /  __/ /  / /_/ / /  / /_/ / /_/  __/
+/_/|_|\___/_/  /_.___/_/   \__,_/\__/\___/
+
+Version: dev (43f9ca1) - 03/06/19 - Ronnie Flathers @ropnop
+
+2019/03/06 21:37:29 >  Using KDC(s):
+2019/03/06 21:37:29 >   pdc01.lab.ropnop.com:88
+
+2019/03/06 21:37:35 >  [+] VALID USERNAME:  callen@lab.ropnop.com:Password123
+2019/03/06 21:37:37 >  [+] VALID USERNAME:  eshort@lab.ropnop.com:Password123
+2019/03/06 21:37:37 >  Done! Tested 2755 logins (2 successes) in 7.674 seconds

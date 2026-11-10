@@ -1,0 +1,70 @@
+services:
+  traefik:
+    image: traefik:v3.3
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    ports:
+      - "127.0.0.1:80:80"
+      - "127.0.0.1:8080:8080"
+    volumes:
+      - ./traefik.yml:/etc/traefik/traefik.yml
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  back:
+    # root: writes Horusec uploads/workspaces; already root-equivalent via docker.sock
+    user: root
+    image: ${BACK_END_IMAGE}
+    environment:
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - uploads:/data/curium/uploads
+    env_file:
+      - ../../.env
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.back_${COMPOSE_PROJECT_NAME}.rule=Host(`$AUTO_HOST`) && PathPrefix(`/back`)"
+      - "traefik.http.services.back_${COMPOSE_PROJECT_NAME}.loadbalancer.server.port=8000"
+      - "traefik.http.routers.back_${COMPOSE_PROJECT_NAME}.entrypoints=web"
+    entrypoint: [ "sh", "core/infra/app/manage.sh", "server" ]
+
+  worker:
+    # root: writes Horusec uploads/workspaces; already root-equivalent via docker.sock
+    user: root
+    image: ${BACK_END_IMAGE}
+    environment:
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - uploads:/data/curium/uploads
+      - /tmp/curium:/tmp/curium
+    env_file:
+      - ../../.env
+    entrypoint: [ "sh", "core/infra/app/manage.sh", "workers" ]
+
+  neo4j:
+    image: neo4j:5
+    container_name: neo4j-db
+    environment:
+      NEO4J_AUTH: ${NEO4J_USER}/${NEO4J_PASS}
+    volumes:
+      - neo4j-data:/data
+    ports:
+      - "127.0.0.1:7474:7474"
+      - "127.0.0.1:7687:7687"
+
+  redis:
+    image: redis:8.0
+    restart: unless-stopped
+    expose:
+      - "6379"
+    command: >
+      redis-server --appendonly yes --appendfsync everysec --auto-aof-rewrite-percentage 50 --auto-aof-rewrite-min-size 64mb
+    volumes:
+      - redis-data:/data
+
+volumes:
+  neo4j-data:
+  redis-data:
+  uploads:

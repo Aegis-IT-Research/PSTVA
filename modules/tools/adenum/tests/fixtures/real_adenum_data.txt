@@ -1,0 +1,73 @@
+█████╗ ██████╗     ███████╗███╗   ██╗██╗   ██╗███╗   ███╗
+  ██╔══██╗██╔══██╗    ██╔════╝████╗  ██║██║   ██║████╗ ████║
+  ███████║██║  ██║    █████╗  ██╔██╗ ██║██║   ██║██╔████╔██║
+  ██╔══██║██║  ██║    ██╔══╝  ██║╚██╗██║██║   ██║██║╚██╔╝██║
+  ██║  ██║██████╔╝    ███████╗██║ ╚████║╚██████╔╝██║ ╚═╝ ██║
+  ╚═╝  ╚═╝╚═════╝     ╚══════╝╚═╝  ╚═══╝ ╚═════╝ ╚═╝     ╚═╝
+
+
+[*] Domain name:	aegis.local
+[*] Username:	   eraptis
+[*] IP Address:	 192.168.100.20
+[!] SSL supported:  FALSE
+[!] SSL connect:	FALSE
+
+[+] Succesfully Authenticated With LDAP
+
+[-] Authentication mechanism
+[+] GSSAPI
+[+] GSS-SPNEGO
+[+] EXTERNAL
+[!] DIGEST-MD5						 Consider as weak security protocols
+[-] LOGIN							  Plaintext password
+[-] PLAIN							  Plaintext password
+
+====================================================
+===================== Enum LDAP ====================
+====================================================
+
+
+
+[-] Users who are Domain Admin
+[*] Username: Administrator            CN=Administrator,CN=Users,DC=aegis,DC=local
+[*] Username: eraptis                  CN=Evangelos Raptis,CN=Users,DC=aegis,DC=local
+
+[-] Domain Controllers
+[*] Computer: WIN-D9HL4AN4816$         CN=WIN-D9HL4AN4816,OU=Domain Controllers,DC=aegis,DC=local
+	[V] Windows Server 2022 Standard 10.0 (20348)
+
+[-] Users with Password Not Expire
+[*] Username: Administrator            CN=Administrator,CN=Users,DC=aegis,DC=local
+[*] Username: Guest                    CN=Guest,CN=Users,DC=aegis,DC=local
+[*] Username: eraptis                  CN=Evangelos Raptis,CN=Users,DC=aegis,DC=local
+[*] Username: adoe                     CN=Alice Doe,CN=Users,DC=aegis,DC=local
+
+[-] Users with old password
+
+[-] Users with an interesting description
+[!] No entry found !
+
+[-] Users with not the default encryption
+[*] Username: krbtgt                   Password is in a reversible encryption or in DES !
+
+[-] Protecting Privileged Domain Accounts
+[!] No entry found !
+
+[-] Not Default Attributes (TEST IN BETA)
+
+[!] No entry found !
+
+[-] Laps Password
+[!] No entry found !
+
+
+====================================================
+==================== Attack AD =====================
+====================================================
+
+
+[-] AS-REP Roastable Users
+[!] No entry found !
+
+[-] Kerberoastable Users
+[!] No entry found !

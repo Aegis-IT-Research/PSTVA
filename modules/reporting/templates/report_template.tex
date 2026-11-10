@@ -1,0 +1,102 @@
+% EY-style LaTeX template for penetration test report (Pandoc)
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{graphicx}
+% Enable table coloring features
+\usepackage[table]{xcolor}
+\usepackage{hyperref}
+% Hide link borders/colors throughout the document
+\hypersetup{hidelinks}
+\usepackage{longtable,booktabs}
+\usepackage{caption}
+\captionsetup[table]{position=top,labelfont=bf}
+\usepackage{calc} % enable arithmetic in p{ } column specs
+\usepackage{array} % for >{\raggedright\arraybackslash} column specs
+\usepackage{parskip}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{etoolbox} % for \AtBeginEnvironment hooks
+\usepackage{listings}
+\lstset{basicstyle=\ttfamily\small,breaklines=true,numbers=left,numberstyle=\tiny,frame=single}
+
+% Colors for severities
+\definecolor{Critical}{HTML}{B30000}
+\definecolor{High}{HTML}{D23600}
+\definecolor{Medium}{HTML}{B8860B}
+\definecolor{Low}{HTML}{2B7D2B}
+\definecolor{Informational}{HTML}{3E4E88}
+
+% Pandoc tight list macro safeguard
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% Pandoc may emit \passthrough{...} in some conversions; provide a no-op fallback
+\providecommand{\passthrough}[1]{#1}
+
+% Metadata macros
+\newcommand{\ReportTitle}{$title$}
+\newcommand{\ReportClient}{$client$}
+\newcommand{\ReportPreparedBy}{$preparedby$}
+\newcommand{\ReportVersion}{$version$}
+\newcommand{\ReportDate}{$date$}
+\newcommand{\ReportClassification}{$classification$}
+\newcommand{\ReportTagline}{$tagline$}
+% Pandoc sometimes injects \real{<num>} in width calc; define pass-through if absent
+\providecommand{\real}[1]{#1}
+
+% Header / Footer mimicking sample style
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\scriptsize \ReportTagline}
+% Footer: -<pagenumber><Classification>
+\fancyfoot[C]{\scriptsize -\thepage\ReportClassification}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Section formatting similar to sample (bold, spaced)
+\titleformat{\section}{\large\bfseries}{}{0pt}{\thesection.\ }[]
+\titleformat{\subsection}{\normalsize\bfseries}{}{0pt}{\thesubsection\ }[]
+
+% Reduce space before/after sections slightly
+\titlespacing*{\section}{0pt}{1.2em}{0.6em}
+\titlespacing*{\subsection}{0pt}{1.0em}{0.4em}
+
+% Table styling adjustments
+% Slightly denser tables with a bit more line height
+\setlength{\tabcolsep}{5.5pt}
+\renewcommand{\arraystretch}{1.22}
+% Spacing before/after longtables
+\setlength{\LTpre}{0.4em}
+\setlength{\LTpost}{0.8em}
+
+% Subtle zebra striping for all longtables and smaller table font
+\definecolor{TableStripe}{HTML}{F6F8FA} % very light gray-blue
+\AtBeginEnvironment{longtable}{\rowcolors{2}{TableStripe}{white}\small}
+
+% Severity command for inline highlighting
+\newcommand{\sev}[1]{\textbf{\textcolor{#1}{#1}}}
+
+% Cover page
+\begin{document}
+\begin{titlepage}
+  \centering
+  {\Large \ReportTagline\par}\vspace{2.2cm}
+  {\Huge\bfseries \ReportTitle\par}\vspace{1.2cm}
+  {\Large Web Application Assessment Report\\[0.8cm]}
+  {\large Client: \ReportClient\\[0.3cm]
+  Prepared By: \ReportPreparedBy\\[0.3cm]
+  Version: \ReportVersion\\[0.3cm]
+  Date: \ReportDate\\[0.6cm]
+  Classification: \ReportClassification}
+  \vfill
+  $if(logo)$\includegraphics[height=2.2cm]{$logo$}$endif$
+  \vfill
+  \thispagestyle{empty}
+\end{titlepage}
+
+% Table of Contents
+{\hypersetup{linkcolor=black}\tableofcontents}
+\newpage
+
+$body$
+
+\end{document}

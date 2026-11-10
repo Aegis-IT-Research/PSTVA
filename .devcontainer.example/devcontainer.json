@@ -1,0 +1,11 @@
+{
+    "name": "curium-container",
+    "dockerComposeFile": [
+        "../core/infra/compose.yml",
+        "./compose.devcontainer.yml"
+    ],
+    "service": "back",
+    "workspaceFolder": "/app",
+    "overrideCommand": true,
+    "shutdownAction": "stopCompose"
+}

@@ -1,0 +1,19 @@
+services: 
+  back:
+    volumes:
+      - ./:/app
+      - curium-root-extensions:/root/.vscode-server/extensions
+      - curium-root-extensionsCache:/root/.vscode-server/extensionsCache
+      - curium-extensions:/home/developer/.vscode-server/extensions
+      - curium-extensionsCache:/home/developer/.vscode-server/extensionsCache
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - PYTHONPATH=/app
+  
+  worker: !reset null
+
+volumes:
+  curium-root-extensions:
+  curium-root-extensionsCache:
+  curium-extensions:
+  curium-extensionsCache:

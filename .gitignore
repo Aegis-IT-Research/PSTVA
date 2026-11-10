@@ -1,0 +1,9 @@
+__pycache__
+.venv
+.vscode
+.devcontainer
+.env
+**/smoke_tests/results/**
+
+# Local Makefile build logs
+.make-logs/
